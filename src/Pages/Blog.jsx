@@ -1,6 +1,20 @@
-function Blog(){
+import { NavLink } from "react-router-dom";
+
+function Blog({blogItems}){
     return(
-        <h3>Siia tuleb blogileht</h3>
+        <div>
+            <h3>Minu uudised</h3>
+            {
+                blogItems.map((blog) => {
+                    return(
+                        <div key={blog.id}>
+                            <h3>{blog.title}</h3>
+                            <NavLink to={`/news/${blog.id}`}>Loe edasi ...</NavLink>
+                        </div>
+                    )
+                })
+            }
+        </div>
     )
 }
 
