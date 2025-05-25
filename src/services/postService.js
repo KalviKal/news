@@ -40,6 +40,7 @@ const PostsRequests = `
             }
   				title
   				date
+          excerpt
       picture{
         title
         url
@@ -62,7 +63,8 @@ async function fetchBlogPostsList() {
       id: rec.sys.id,
       title: rec.title,
       pictureUrl: rec.picture.url,
-      authorName: rec.author.name
+      authorName: rec.author.name,
+      excerpt: rec.excerpt,
       
     }
   })

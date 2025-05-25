@@ -9,6 +9,7 @@ function Blog({blogItems}){
                     return(
                         <div key={blog.id}>
                             <h3>{blog.title}</h3>
+                            <p>{blog.excerpt}</p>
                             <NavLink to={`/news/${blog.id}`}>Loe edasi ...</NavLink>
                         </div>
                     )
