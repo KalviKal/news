@@ -54,6 +54,23 @@ const PostsRequests = `
 }
 `
 
+
+function _makePostDetailRequest(postId){
+  return `
+  query {
+  post(id:"${postId}"){
+    title
+    author {
+      name
+    }
+    picture{url}
+    content{json}
+  }
+}
+`
+}
+
+
 async function fetchBlogPostsList() {
   const data = await _fetch(PostsRequests)
   console.log(data)
@@ -68,10 +85,28 @@ async function fetchBlogPostsList() {
       
     }
   })
+
+ 
   return blogItems
 }
 
 
+async function fetchBlogPostDetails(postId){
+  const postRequest = _makePostDetailRequest(postId)
+  const data = await _fetch(postRequest)
+  console.log(data)
+  
+  const rawPost = data.data.post
+  return {
+    authorName: rawPost.author.name,
+    content: rawPost.content.json,
+    pictureUrl: rawPost.picture.url,
+    title: rawPost.title
+  }
+}
+
+
 export {
-  fetchBlogPostsList
+  fetchBlogPostsList,
+  fetchBlogPostDetails
 }

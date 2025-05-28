@@ -13,18 +13,21 @@ import Images from './Pages/Images'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import useFetchBlogsList from './hooks/useFetchBlogsList'
+import useFetchBlogPostDetails from './hooks/useFetchBlogPostDetails'
 import BlogDetails from './Pages/BlogDetails'
 
 function App() {
   
-  const { blogItems} = useFetchBlogsList()
+  const [blogId, setBlogId] = useState("")
+  const {blogItems} = useFetchBlogsList()
+  
 
   return (
    <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Homepage />} />
-        <Route path="news" element={<Blog blogItems = {blogItems} />} />
+        <Route path="news" element={<Blog blogItems = {blogItems} setBlogId={setBlogId} />} />
         <Route path="news/:postId" element={<BlogDetails/>} />
         <Route path="contact" element={<Contact />} />
         <Route path="services" element={<Services />} />

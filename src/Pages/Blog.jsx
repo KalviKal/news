@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function Blog({blogItems}){
+function Blog({blogItems, setBlogId}){
     return(
         <div>
             <h3>Minu uudised</h3>
@@ -10,7 +10,15 @@ function Blog({blogItems}){
                         <div key={blog.id}>
                             <h3>{blog.title}</h3>
                             <p>{blog.excerpt}</p>
-                            <NavLink to={`/news/${blog.id}`}>Loe edasi ...</NavLink>
+                            <div>
+                                <img src={blog.pictureUrl} alt={blog.title} style={{width: '100px', height: '100px'}} />
+                            </div>
+                            <NavLink 
+                                to={`/news/${blog.id}`}
+                                onClick={() => setBlogId(blog.id)}
+                                >
+                                Loe edasi ...
+                                </NavLink>
                         </div>
                     )
                 })
