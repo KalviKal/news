@@ -91,7 +91,7 @@ async function fetchBlogPostsList() {
 }
 
 
-async function fetchBlogPostDetails(postId){
+async function fetchBlogPostDetails(postId) {
   const postRequest = _makePostDetailRequest(postId)
   const data = await _fetch(postRequest)
   console.log(data)
@@ -108,5 +108,6 @@ async function fetchBlogPostDetails(postId){
 
 export {
   fetchBlogPostsList,
-  fetchBlogPostDetails
+  fetchBlogPostDetails,
+  _makePostDetailRequest
 }
