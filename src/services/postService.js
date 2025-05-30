@@ -1,14 +1,14 @@
-const SPACE = 'gwol08lci4q0'
-const TOKEN = 'Bearer yc0GlUtLW6YThcCNDNggEcx5rUe_fOxuPaIqXozZYdE'
-const URL = `https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/master`
+
+const URL = `https://graphql.contentful.com/content/v1/spaces/${import.meta.env.VITE_SPACE}/environments/master`
 
 async function _fetch(request, retries = 0) {
+    
     const result = await fetch(
         URL,
         {
             method: 'POST',
             headers: {
-                Authorization: TOKEN,
+                Authorization: import.meta.env.VITE_TOKEN,
                 //Origin: ORIGIN,
                 'Content-Type': 'application/json'
             },
